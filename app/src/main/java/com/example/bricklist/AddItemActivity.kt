@@ -84,7 +84,7 @@ class AddItemActivity : AppCompatActivity() {
                         var itemId: String? = null
                         var type: String? = null
                         var qty:String? = null
-                        var colorId:String? = null
+                        var color:String? = null
                         var extra:String? = null
                         var alternate:String? = null
 
@@ -95,7 +95,7 @@ class AddItemActivity : AppCompatActivity() {
                                     "ITEMTYPE" -> {type = node.textContent}
                                     "ITEMID" -> {itemId = node.textContent}
                                     "QTY" -> {qty = node.textContent}
-                                    "COLOR" -> {colorId = node.textContent}
+                                    "COLOR" -> {color = node.textContent}
                                     "EXTRA" -> {extra = node.textContent}
                                     "ALTERNATE" -> {alternate = node.textContent}
                                 }
@@ -107,13 +107,21 @@ class AddItemActivity : AppCompatActivity() {
                             val id = myDbHelper.generateInventoryPartID()
 
                             if(id != null && inventoryId != null && type != null && itemId != null
-                                && qty != null && colorId != null && extra != null){
+                                && qty != null && color != null && extra != null){
                                 var itemIdInt: Int =myDbHelper.getPartID(itemId)
                                 var typeInt: Int = myDbHelper.getItemTypeID(type)
-                                var colorIdInt:Int = colorId.toInt() // tutaj niepotzebna kolumna w id w tabeli z kolorami
+                                var colorIdInt:Int = myDbHelper.getColorIdByCode(color)  //colorId.toInt()
 //                                var extraInt:Int = extra.toInt()
 
-                                val inventoryPartModel = InventoryPartsModel(id, inventoryId, typeInt, itemIdInt, qty.toInt(), 0, colorIdInt, 0, "")
+                                val inventoryPartModel = InventoryPartsModel(id,
+                                    inventoryId,
+                                    typeInt,
+                                    itemIdInt,
+                                    qty.toInt(),
+                                    0,
+                                    colorIdInt,
+                                    0,
+                                    "")
                                 myDbHelper.addInventoryPart(inventoryPartModel)
                             }
                         }

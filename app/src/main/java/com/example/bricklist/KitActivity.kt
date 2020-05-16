@@ -1,6 +1,7 @@
 package com.example.bricklist
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.media.Image
@@ -94,7 +95,9 @@ class KitActivity : AppCompatActivity() {
             // image
             val imgV = ImageView(this)
             val photo = items.get(i).getPhoto()
-            val bm = BitmapFactory.decodeByteArray(photo, 0, photo!!.size)
+            var bm: Bitmap? = null
+            if(photo != null)
+                bm = BitmapFactory.decodeByteArray(photo, 0, photo!!.size)
             imgV.setImageBitmap(bm)
 
 

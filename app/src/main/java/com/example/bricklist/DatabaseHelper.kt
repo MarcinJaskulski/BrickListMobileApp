@@ -14,8 +14,10 @@ import androidx.annotation.RequiresApi
 import com.example.bricklist.Models.InventoryModel
 import com.example.bricklist.Models.InventoryPartsModel
 import java.io.*
+import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
+import java.net.URLConnection
 import java.time.LocalDateTime
 
 class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContext, DB_NAME, null, 10) {
@@ -226,25 +228,25 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
             val extra = cursor.getInt(7)
             val name = getPartNameById(itemID)
 
-            // dwie wartości potrzebne do pobrania obrazka
-            val colorCode = getColorCodeById(colorID)
-            val imageCode = getImageCodeByItemIdColorId(itemID, colorID)
-
             val inventoryParts  = InventoryPartsModel(
                 id, inventoryID, typeID,
                 itemID, quantityInSet, quantityInStore,
                 colorID, extra, name
             )
 
-            inventoryParts.setColorCode(colorCode)
-            inventoryParts.setImageCode(imageCode)
+            // dwie wartości potrzebne do pobrania obrazka
+            val partCode = getPartCodeById(itemID)
+            val codeCode = getCodeCodeByItemIdColorId(itemID, colorID)
 
             // jeśli wczeniej nie było w bazie zdjęcia, to się teraz doda
             val cd=ImgDownloader()
-            cd.execute()
+            cd.execute(codeCode.toString(), "https://www.lego.com/service/bricks/5/2/" + codeCode,
+                "http://img.bricklink.com/P/" + codeCode + "/" + partCode,
+                "https://www.bricklink.com/PL/" + partCode)
 
+            //4227395
             // juz na pewno jest, więc można pobrać
-            val photo = getImage(4227395)
+            val photo = getImage(codeCode)
             inventoryParts.setPhoto(photo)
 
             inventoryPartsList.add(inventoryParts)
@@ -283,12 +285,18 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
         return queryInDBString(query)
     }
 
-    fun getColorCodeById(id:Int):Int{
-        val query = "SELECT Code FROM Colors WHERE id=$id"
+    fun getPartCodeById(id:Int):String{
+        val query = "SELECT Code FROM Parts WHERE id=$id"
+        return queryInDBString(query)
+    }
+
+    fun getColorIdByCode(code:String): Int {
+        val query = "SELECT id FROM Colors WHERE Code='$code'"
         return queryInDBInt(query)
     }
 
-    fun getImageCodeByItemIdColorId(itemId:Int, colorId:Int):Int{
+
+    fun getCodeCodeByItemIdColorId(itemId:Int, colorId:Int):Int{
         val query = "SELECT Code FROM Codes WHERE ItemID=$itemId AND ColorID=$colorId"
         return queryInDBInt(query)
     }
@@ -408,12 +416,19 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
             try{
                 var photo: ByteArray? = null
 
-                val url = URL("https://www.lego.com/service/bricks/5/2/4227395")
-                val connection = url.openConnection()
-                connection.connect()
+                var url = URL("https://www.lego.com/service/bricks/5/2/4227395")
+                var connection: HttpURLConnection? = null
 
+                for (i in 1..3) {
+                    url = URL(params[i])
+                    connection = url.openConnection() as HttpURLConnection
+                    connection.connect()
+                    if (connection.responseCode == HttpURLConnection.HTTP_OK) {
+                        break
+                    }
+                }
 
-                val lenghtOfFile = connection.contentLength
+                val lenghtOfFile = connection!!.contentLength
                 val isStream = url.openStream() //val inputStream = connection.inputStream
 
                 val fos = ByteArrayOutputStream();
@@ -438,7 +453,7 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
                 fos.close()
 
                 // zapisa do bazy
-                insertImage(4227395,photo)
+                insertImage(params[0]!!.toInt(),photo)
             }
             catch (e: MalformedURLException){
                 return "Malformed URL"

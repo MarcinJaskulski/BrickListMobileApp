@@ -9,7 +9,20 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63ba8242-5482-47a6-b96b-e300c8b4b10d" name="Default Changelist" comment="" />
+    <list default="true" id="63ba8242-5482-47a6-b96b-e300c8b4b10d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.6.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/bricklist/AddItemActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/bricklist/AddItemActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/bricklist/KitActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/bricklist/KitActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/bricklist/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/bricklist/MainActivity.kt" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,13 +55,18 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1bopXJ7zzR71nPjzwGnqI9oLQW8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DEBUGGABLE_DEVICE" value="xiaomi-redmi_5_plus-29e7902e9805" />
     <property name="DEBUGGABLE_PROCESS" value="com.example.bricklist" />
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="29e7902e9805" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-05-16T11:24:10.943Z" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Waluty" />
@@ -151,82 +169,93 @@
     </task>
     <servers />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>38</line>
+          <line>40</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>25</line>
+          <line>27</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>53</line>
+          <line>55</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>69</line>
+          <line>71</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>75</line>
+          <line>77</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>85</line>
+          <line>87</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>101</line>
+          <line>103</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>62</line>
+          <line>64</line>
           <option name="timeStamp" value="18" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>48</line>
+          <line>50</line>
           <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>138</line>
+          <line>140</line>
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>124</line>
+          <line>126</line>
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/KitActivity.kt</url>
-          <line>204</line>
+          <line>207</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/KitActivity.kt</url>
-          <line>209</line>
+          <line>212</line>
           <option name="timeStamp" value="88" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>332</line>
+          <line>340</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>347</line>
+          <line>355</line>
           <option name="timeStamp" value="91" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
@@ -236,22 +265,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/AddItemActivity.kt</url>
-          <line>178</line>
+          <line>186</line>
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/AddItemActivity.kt</url>
-          <line>176</line>
+          <line>184</line>
           <option name="timeStamp" value="96" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/AddItemActivity.kt</url>
-          <line>173</line>
+          <line>181</line>
           <option name="timeStamp" value="97" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/AddItemActivity.kt</url>
-          <line>170</line>
+          <line>178</line>
           <option name="timeStamp" value="98" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
@@ -276,7 +305,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/AddItemActivity.kt</url>
-          <line>144</line>
+          <line>152</line>
           <option name="timeStamp" value="104" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
@@ -286,47 +315,52 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/KitActivity.kt</url>
-          <line>224</line>
+          <line>227</line>
           <option name="timeStamp" value="106" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/KitActivity.kt</url>
-          <line>165</line>
+          <line>168</line>
           <option name="timeStamp" value="114" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>252</line>
-          <option name="timeStamp" value="116" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>247</line>
-          <option name="timeStamp" value="120" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>376</line>
-          <option name="timeStamp" value="122" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>408</line>
-          <option name="timeStamp" value="123" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>434</line>
-          <option name="timeStamp" value="124" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>322</line>
+          <line>330</line>
           <option name="timeStamp" value="125" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
+          <line>449</line>
+          <option name="timeStamp" value="127" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/KitActivity.kt</url>
+          <line>83</line>
+          <option name="timeStamp" value="131" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
+          <line>242</line>
+          <option name="timeStamp" value="132" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
+          <line>416</line>
+          <option name="timeStamp" value="133" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
+          <line>238</line>
+          <option name="timeStamp" value="135" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
+          <line>288</line>
+          <option name="timeStamp" value="136" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-field">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>113</line>
+          <line>115</line>
           <properties myFieldName="DB_NAME" myClassName="com.example.bricklist.DatabaseHelper.Companion" />
           <option name="timeStamp" value="17" />
         </line-breakpoint>

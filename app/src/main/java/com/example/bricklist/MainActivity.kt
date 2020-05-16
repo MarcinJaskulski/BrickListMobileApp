@@ -96,6 +96,7 @@ class MainActivity : AppCompatActivity() {
             showKitList(kitList!!)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun showKitList(kits:List<InventoryModel>) {
         val leftRowMargin = 0
         val topRowMargin = 0
