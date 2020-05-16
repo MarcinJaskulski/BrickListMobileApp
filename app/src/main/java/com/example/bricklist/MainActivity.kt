@@ -125,7 +125,7 @@ class MainActivity : AppCompatActivity() {
             }
             btn.setPadding(20, 15, 20, 15)
             run({
-                btn.setBackgroundColor(Color.parseColor("#32CD32"))
+                btn.setBackgroundColor(Color.parseColor("#D3D3D3"))
                 btn.setText(kitName)
                 btn.setTextSize(TypedValue.COMPLEX_UNIT_PX, mediumTextSize.toFloat())
             })
@@ -173,7 +173,7 @@ class MainActivity : AppCompatActivity() {
                     TableRow.LayoutParams.WRAP_CONTENT)
                 tvSepLay.span = 4
                 tvSep.layoutParams = tvSepLay
-                tvSep.setBackgroundColor(Color.parseColor("#ff0000"))
+                tvSep.setBackgroundColor(Color.parseColor("#000000"))
                 tvSep.height = 10
 
                 trSep.addView(tvSep)

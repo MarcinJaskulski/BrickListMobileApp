@@ -39,9 +39,6 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
 
     private fun checkDataBase(): Boolean {
         var checkDB: SQLiteDatabase? = null
-//        val file = File(DB_PATH + "/assets/" + DB_NAME)
-//        if(file.length() < 100000) return false
-//        return true
         try {
             val myPath = DB_PATH + DB_NAME
             checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY)
@@ -165,14 +162,17 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
     }
 
     fun addInventoryPart(inventoryPartModel: InventoryPartsModel){
+        val itemID = inventoryPartModel.getItemID()
+        val colorID = inventoryPartModel.getColorID()
+
         val values = ContentValues()
         values.put("id", inventoryPartModel.getId())
         values.put("InventoryID", inventoryPartModel.getInventoryID())
         values.put("TypeID", inventoryPartModel.getTypeID())
-        values.put("ItemID", inventoryPartModel.getItemID())
+        values.put("ItemID", itemID)
         values.put("QuantityInSet", inventoryPartModel.getQuantityInSet())
         values.put("QuantityInStore", inventoryPartModel.getQuantityInStore())
-        values.put("ColorID", inventoryPartModel.getColorID())
+        values.put("ColorID", colorID)
 //        values.put("Extra", inventoryPartModel.getExtra())
 
         val db = this.writableDatabase

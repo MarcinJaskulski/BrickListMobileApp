@@ -167,7 +167,7 @@ class KitActivity : AppCompatActivity() {
 
 
             tr.addView(imgV)
-            tr.addView(tv)
+//            tr.addView(tv)
             tr.addView(tv3)
 
             tr.addView(btn1)
@@ -195,7 +195,7 @@ class KitActivity : AppCompatActivity() {
                     TableRow.LayoutParams.WRAP_CONTENT)
                 tvSepLay.span = 5
                 tvSep.layoutParams = tvSepLay
-                tvSep.setBackgroundColor(Color.parseColor("#ff0000"))
+                tvSep.setBackgroundColor(Color.parseColor("#000000"))
                 tvSep.height = 10
 
                 trSep.addView(tvSep)
