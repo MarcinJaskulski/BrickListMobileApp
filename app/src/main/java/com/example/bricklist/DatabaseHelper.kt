@@ -241,8 +241,8 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
             // jeśli wczeniej nie było w bazie zdjęcia, to się teraz doda
             val cd=ImgDownloader()
             val a = cd.execute(codeCode.toString(), "https://www.lego.com/service/bricks/5/2/" + codeCode,
-                "http://img.bricklink.com/P/" + codeCode + "/" + partCode,
-                "https://www.bricklink.com/PL/" + partCode)
+                "http://img.bricklink.com/P/" + codeCode + "/" + partCode + ".gif",
+                "https://www.bricklink.com/PL/" + partCode + ".jpg")
 
 //            val b = a.get()
             //4227395
