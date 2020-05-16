@@ -214,7 +214,7 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
         val inventoryPartsList = mutableListOf<InventoryPartsModel>()
         val db = this.writableDatabase
 
-        val query:String = "SELECT * FROM InventoriesParts WHERE InventoryID=$inventoryId"
+        val query:String = "SELECT * FROM InventoriesParts WHERE InventoryID=$inventoryId ORDER BY ColorID desc"
         val cursor = db.rawQuery(query,null)
 
         while(cursor.moveToNext()){
@@ -240,13 +240,17 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
 
             // jeśli wczeniej nie było w bazie zdjęcia, to się teraz doda
             val cd=ImgDownloader()
-            cd.execute(codeCode.toString(), "https://www.lego.com/service/bricks/5/2/" + codeCode,
+            val a = cd.execute(codeCode.toString(), "https://www.lego.com/service/bricks/5/2/" + codeCode,
                 "http://img.bricklink.com/P/" + codeCode + "/" + partCode,
                 "https://www.bricklink.com/PL/" + partCode)
 
+//            val b = a.get()
             //4227395
             // juz na pewno jest, więc można pobrać
-            val photo = getImage(codeCode)
+            var photo = getImage(codeCode)
+//            if(photo == null)
+//                photo = b.toByteArray()
+//
             inventoryParts.setPhoto(photo)
 
             inventoryPartsList.add(inventoryParts)
@@ -454,6 +458,7 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
 
                 // zapisa do bazy
                 insertImage(params[0]!!.toInt(),photo)
+                return photo.toString()
             }
             catch (e: MalformedURLException){
                 return "Malformed URL"
@@ -464,6 +469,7 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
             catch (e: IOException){
                 return "IO Exception"
             }
+
             return "success"
         }
     }
