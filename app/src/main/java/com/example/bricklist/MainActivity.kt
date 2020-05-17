@@ -184,7 +184,7 @@ class MainActivity : AppCompatActivity() {
 
 
     fun readFile():String{
-        val defaultValue = "0;http://fcds.cs.put.poznan.pl/MyWeb/BL/"
+        val defaultValue = "1;http://fcds.cs.put.poznan.pl/MyWeb/BL/"
         val fileName = "settings.txt"
         try{
             if(FileExist(fileName)){

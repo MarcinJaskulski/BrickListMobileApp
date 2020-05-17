@@ -238,19 +238,19 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
             val partCode = getPartCodeById(itemID)
             val codeCode = getCodeCodeByItemIdColorId(itemID, colorID)
 
-            // jeśli wczeniej nie było w bazie zdjęcia, to się teraz doda
-            val cd=ImgDownloader()
-            val a = cd.execute(codeCode.toString(), "https://www.lego.com/service/bricks/5/2/" + codeCode,
-                "http://img.bricklink.com/P/" + codeCode + "/" + partCode + ".gif",
-                "https://www.bricklink.com/PL/" + partCode + ".jpg")
-
-//            val b = a.get()
-            //4227395
-            // juz na pewno jest, więc można pobrać
             var photo = getImage(codeCode)
+            // jeśli wczeniej nie było w bazie zdjęcia, to się teraz doda
+            if(photo == null){
+                val cd=ImgDownloader()
+                cd.execute(codeCode.toString(),
+                    "https://www.lego.com/service/bricks/5/2/" + codeCode,
+                    "http://img.bricklink.com/P/" + codeCode + "/" + partCode + ".gif",
+                    "https://www.bricklink.com/PL/" + partCode + ".jpg")
+                photo = getImage(codeCode) // skoro synchronicznie jest pobrane zdjęcie, to to niekoniecznie coś przeczyta
+            }
+//            val b = a.get()
 //            if(photo == null)
 //                photo = b.toByteArray()
-//
             inventoryParts.setPhoto(photo)
 
             inventoryPartsList.add(inventoryParts)
@@ -395,6 +395,7 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
             photo = cursor.getBlob(0)
             cursor.close()
         }
+        db.close()
         if(photo==null)
             return null
         return photo
@@ -458,7 +459,7 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
 
                 // zapisa do bazy
                 insertImage(params[0]!!.toInt(),photo)
-                return photo.toString()
+//                return photo.toString()
             }
             catch (e: MalformedURLException){
                 return "Malformed URL"

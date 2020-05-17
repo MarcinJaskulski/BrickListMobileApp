@@ -48,7 +48,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     fun readFile():String{
-        val defaultValue = "0;http://fcds.cs.put.poznan.pl/MyWeb/BL/"
+        val defaultValue = "1;http://fcds.cs.put.poznan.pl/MyWeb/BL/"
         try{
             if(FileExist(fileName)){
                 val file = InputStreamReader(openFileInput((fileName)))
