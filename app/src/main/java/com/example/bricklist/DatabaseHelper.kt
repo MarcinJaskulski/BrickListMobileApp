@@ -248,9 +248,7 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
                     "https://www.bricklink.com/PL/" + partCode + ".jpg")
                 photo = getImage(codeCode) // skoro synchronicznie jest pobrane zdjęcie, to to niekoniecznie coś przeczyta
             }
-//            val b = a.get()
-//            if(photo == null)
-//                photo = b.toByteArray()
+
             inventoryParts.setPhoto(photo)
 
             inventoryPartsList.add(inventoryParts)
@@ -433,29 +431,20 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
                     }
                 }
 
-                val lenghtOfFile = connection!!.contentLength
-                val isStream = url.openStream() //val inputStream = connection.inputStream
-
-                val fos = ByteArrayOutputStream();
-
+                val inputStream = connection!!.inputStream
+                val bis = BufferedInputStream(inputStream)
+                var outputStream = ByteArrayOutputStream();
+                var count = 0;
                 val data = ByteArray(1024)
-                var count = 0
-                var total: Long = 0
-                var progress = 0
-                count = isStream.read(data)
-                while(count!=-1){
-                    total += count.toLong()
-                    val progress_temp = total.toInt()*100/lenghtOfFile
-                    if(progress_temp % 10 ==0 && progress != progress_temp){
-                        progress = progress_temp
-                    }
-                    fos.write(data,0,count)
-                    count = isStream.read(data)
+                count = bis.read(data)
+                while (count != -1) {
+                    outputStream.write(data, 0, count)
+                    count = bis.read(data)
                 }
-                photo = fos.toByteArray()
+                photo = outputStream.toByteArray()
 
-                isStream.close()
-                fos.close()
+                outputStream.close()
+                bis.close()
 
                 // zapisa do bazy
                 insertImage(params[0]!!.toInt(),photo)

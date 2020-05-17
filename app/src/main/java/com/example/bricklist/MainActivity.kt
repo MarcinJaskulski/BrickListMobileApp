@@ -147,7 +147,11 @@ class MainActivity : AppCompatActivity() {
                 val myDbHelper = DatabaseHelper(this@MainActivity)
                 if(activity){
                     myDbHelper.updateActive(kits.get(i).getId(), false)
-                    tableCurrencies.removeView(tr)
+
+                    val data = readFile()
+                    val dataList = data.split(";")
+                    if(dataList[0].toInt() == 1)
+                        tableCurrencies.removeView(tr)
                 }
                 else
                     myDbHelper.updateActive(kits.get(i).getId(), true)
