@@ -88,6 +88,10 @@ class KitActivity : AppCompatActivity() {
 
             // image
             val imgV = ImageView(this)
+            val dm = DisplayMetrics()
+            imgV.minimumHeight = dm.heightPixels
+            imgV.minimumWidth = dm.widthPixels
+
             val photo = items.get(i).getPhoto()
             var bm: Bitmap? = null
             if(photo != null)
@@ -100,9 +104,7 @@ class KitActivity : AppCompatActivity() {
                 imgV.foregroundGravity = Gravity.CENTER
             }
 
-            val dm = DisplayMetrics()
-            imgV.minimumHeight = dm.heightPixels.plus(10)
-            imgV.minimumWidth = dm.widthPixels
+
 
             // Nazwa
             val nameTV = TextView(this)

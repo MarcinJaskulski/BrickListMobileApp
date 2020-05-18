@@ -343,16 +343,6 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
         return value
     }
 
-    fun insertImage(code: String, img:ByteArray?){
-        val values = ContentValues()
-        values.put("Image",img)
-        val strFilter = "Code='$code'"
-
-        val db = this.writableDatabase
-        db.update("Codes",values,strFilter,null)
-        db.close()
-    }
-
     fun updateQuantity(id: Int, amount: Int){
         val values = ContentValues()
         values.put("QuantityInStore",amount)
@@ -461,7 +451,8 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
                 bis.close()
 
                 // zapisa do bazy
-                insertImage(params[0]!!.toInt(),photo)
+                if(params[0]!!.toInt() != 0)
+                    insertImage(params[0]!!.toInt(),photo)
                return photo;
             }
             catch (e: MalformedURLException){

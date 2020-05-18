@@ -22,7 +22,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/bricklist/KitActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/bricklist/KitActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/bricklist/Models/InventoryPartsModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/bricklist/Models/InventoryPartsModel.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -213,22 +212,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/KitActivity.kt</url>
-          <line>219</line>
+          <line>221</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/KitActivity.kt</url>
-          <line>224</line>
+          <line>226</line>
           <option name="timeStamp" value="88" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>356</line>
+          <line>346</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>371</line>
+          <line>361</line>
           <option name="timeStamp" value="91" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
@@ -268,33 +267,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/KitActivity.kt</url>
-          <line>239</line>
+          <line>241</line>
           <option name="timeStamp" value="106" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>346</line>
-          <option name="timeStamp" value="125" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>463</line>
+          <line>454</line>
           <option name="timeStamp" value="161" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/KitActivity.kt</url>
-          <line>92</line>
-          <option name="timeStamp" value="164" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>252</line>
-          <option name="timeStamp" value="165" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
-          <line>245</line>
-          <option name="timeStamp" value="166" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="kotlin-field">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/bricklist/DatabaseHelper.kt</url>
