@@ -96,14 +96,18 @@ class KitActivity : AppCompatActivity() {
             imgV.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT, 1.0F)
 
-            val dm = DisplayMetrics()
-            imgV.minimumHeight = dm.heightPixels
-            imgV.minimumWidth = dm.widthPixels
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                imgV.foregroundGravity = Gravity.CENTER
+            }
 
+            val dm = DisplayMetrics()
+            imgV.minimumHeight = dm.heightPixels.plus(10)
+            imgV.minimumWidth = dm.widthPixels
 
             // Nazwa
             val nameTV = TextView(this)
-            nameTV.setText(items.get(i).getName())
+            val displayName = items.get(i).getName() + " " + items.get(i).getColorName()
+            nameTV.setText(displayName)
             nameTV.layoutParams = LinearLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
                 TableRow.LayoutParams.WRAP_CONTENT, 1.0F)
             nameTV.setPadding(20, 15, 20, 15)
@@ -112,9 +116,10 @@ class KitActivity : AppCompatActivity() {
             val qtTV = TextView(this)
             qtTV.text = items.get(i).getQuantityInStore().toString() + "/" + items.get(i).getQuantityInSet().toString() // ile w zestawie
             qtTV.layoutParams = LinearLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-                TableRow.LayoutParams.WRAP_CONTENT, 1.5F)
+                TableRow.LayoutParams.WRAP_CONTENT, 1.0F)
             qtTV.id = View.generateViewId()
             qtTV.setPadding(20, 15, 20, 15)
+            qtTV.gravity = Gravity.CENTER
 
 
             val tr = TableRow(this)
@@ -139,6 +144,10 @@ class KitActivity : AppCompatActivity() {
             subIB.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT, 1.0F)
 
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                subIB.foregroundGravity = Gravity.CENTER
+            }
+
             val addIB = ImageButton(this)
             addIB.setOnClickListener{
                 if(inStore + 1 <= inSet){
@@ -154,6 +163,9 @@ class KitActivity : AppCompatActivity() {
             addIB.setBackgroundColor(255)
             addIB.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT, 1.0F)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                addIB.foregroundGravity = Gravity.CENTER
+            }
 
             // ustawieni elementów
             val verticalLinearLayout = LinearLayout(this)

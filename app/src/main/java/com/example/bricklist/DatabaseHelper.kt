@@ -17,7 +17,6 @@ import java.io.*
 import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
-import java.net.URLConnection
 import java.time.LocalDateTime
 
 class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContext, DB_NAME, null, 10) {
@@ -227,6 +226,7 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
             val colorID = cursor.getInt(6)
             val extra = cursor.getInt(7)
             val name = getPartNameById(itemID)
+            val colorName = getColorNameById(colorID)
 
             val inventoryParts  = InventoryPartsModel(
                 id, inventoryID, typeID,
@@ -234,9 +234,12 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
                 colorID, extra, name
             )
 
+            inventoryParts.setColorName(colorName);
+
             // dwie wartości potrzebne do pobrania obrazka
             val partCode = getPartCodeById(itemID)
             val codeCode = getCodeCodeByItemIdColorId(itemID, colorID)
+            val colorCode = getColorCodeById(colorID)
 
             var photo = getImage(codeCode)
             // jeśli wczeniej nie było w bazie zdjęcia, to się teraz doda
@@ -244,7 +247,7 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
                 val cd=ImgDownloader()
                 val img = cd.execute(codeCode.toString(),
                     "https://www.lego.com/service/bricks/5/2/$codeCode",
-                    "http://img.bricklink.com/P/$codeCode/$partCode.gif",
+                    "http://img.bricklink.com/P/$colorCode/$partCode.gif",
                     "https://www.bricklink.com/PL/$partCode.jpg"
                 )
                 photo = img.get() //getImage(codeCode) // skoro synchronicznie jest pobrane zdjęcie, to to niekoniecznie coś przeczyta
@@ -281,6 +284,16 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
     fun getPartNameById(id: Int): String{
         val query = "SELECT Name FROM Parts WHERE id=$id"
         return queryInDBString(query)
+    }
+
+    fun getColorNameById(id: Int): String{
+        val query = "SELECT Name FROM Colors WHERE id=$id"
+        return queryInDBString(query)
+    }
+
+    fun getColorCodeById(id: Int): Int{
+        val query = "SELECT Code FROM Colors WHERE id=$id"
+        return queryInDBInt(query)
     }
 
     fun getItemTypeCodeById(id: Int):String{

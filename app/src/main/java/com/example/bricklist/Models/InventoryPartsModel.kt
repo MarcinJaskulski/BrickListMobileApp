@@ -14,8 +14,7 @@ class InventoryPartsModel(id: Int, inventoryID: Int, typeID: Int, itemID: Int,
     private val Extra: Int = extra
     private val Name: String = name
 
-    private var colorCode: Int? = null
-    private var imageCode: Int? = null
+    private var ColorName: String? = null
 
     private var photo: ByteArray? = null
 
@@ -26,18 +25,12 @@ class InventoryPartsModel(id: Int, inventoryID: Int, typeID: Int, itemID: Int,
         return photo
     }
 
-    fun setColorCode(value: Int?){
-        colorCode = value
-    }
-    fun getColorCode():Int?{
-        return colorCode
+    fun setColorName(value: String?){
+        ColorName = value
     }
 
-    fun setImageCode(value: Int?){
-        imageCode = value
-    }
-    fun getImageCode():Int?{
-        return imageCode
+    fun getColorName(): String?{
+        return ColorName
     }
 
 
