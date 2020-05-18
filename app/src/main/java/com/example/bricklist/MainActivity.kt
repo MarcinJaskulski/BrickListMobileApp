@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
 
             val btn = Button(this)
             btn.layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-                TableRow.LayoutParams.WRAP_CONTENT)
+                TableRow.LayoutParams.WRAP_CONTENT, 0.5F)
             btn.gravity = Gravity.CENTER
             btn.setOnClickListener{
                 val myDbHelper = DatabaseHelper(this@MainActivity)
@@ -133,13 +133,17 @@ class MainActivity : AppCompatActivity() {
             tr.id = i + 1
             tr.layoutParams = TableLayout.LayoutParams(
                 TableLayout.LayoutParams.MATCH_PARENT,
-                TableLayout.LayoutParams.MATCH_PARENT)
+                TableLayout.LayoutParams.WRAP_CONTENT)
             tr.setPadding(10, 0, 10, 0)
 
+            // add separe row
+            val trSep = TableRow(this)
 
             val switch = Switch(this)
             val activity = kits.get(i).getActive()
             switch.isChecked = activity
+            switch.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                TableRow.LayoutParams.WRAP_CONTENT, 1.5F)
 
             switch.setOnClickListener{
                 val myDbHelper = DatabaseHelper(this@MainActivity)
@@ -148,52 +152,52 @@ class MainActivity : AppCompatActivity() {
 
                     val data = readFile()
                     val dataList = data.split(";")
-                    if(dataList[0].toInt() == 1)
+                    if(dataList[0].toInt() == 1){
                         tebleKits.removeView(tr)
+                        tebleKits.removeView(trSep)
+                    }
                 }
                 else
                     myDbHelper.updateActive(kits.get(i).getId(), true)
             }
 
-//            // ustawieni elementów
-//            val verticalLinearLayout = LinearLayout(this)
-//            verticalLinearLayout.orientation = LinearLayout.VERTICAL
-//            verticalLinearLayout.layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-//                TableRow.LayoutParams.WRAP_CONTENT, 1.0F)
-//
-//            val horizontalLinearLayoutLayout = LinearLayout(this)
-//            horizontalLinearLayoutLayout.orientation = LinearLayout.HORIZONTAL
-//            horizontalLinearLayoutLayout.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-//                LinearLayout.LayoutParams.WRAP_CONTENT
-//            )
-//
-//            horizontalLinearLayoutLayout.addView(imgV)
-//            horizontalLinearLayoutLayout.addView(imgV)
+            // ustawieni elementów
+            val verticalLinearLayout = LinearLayout(this)
+            verticalLinearLayout.orientation = LinearLayout.VERTICAL
+            verticalLinearLayout.layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
+                TableRow.LayoutParams.WRAP_CONTENT, 1.0F)
 
-            tr.addView(btn)
-            tr.addView(switch)
+            val horizontalLinearLayoutLayout = LinearLayout(this)
+            horizontalLinearLayoutLayout.orientation = LinearLayout.HORIZONTAL
+            horizontalLinearLayoutLayout.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+
+            horizontalLinearLayoutLayout.addView(btn)
+            horizontalLinearLayoutLayout.addView(switch)
+
+            verticalLinearLayout.addView(horizontalLinearLayoutLayout)
+
+            tr.addView(verticalLinearLayout)
             tebleKits.addView(tr)
 
             // linia separująca
-            if (i > -1) {
-                val trSep = TableRow(this)
-                val trParamsSep = TableLayout.LayoutParams(
-                    TableLayout.LayoutParams.MATCH_PARENT,
-                    TableLayout.LayoutParams.WRAP_CONTENT)
-                trParamsSep.setMargins(leftRowMargin, topRowMargin, rightRowMargin, bottomRowMargin)
+            val trParamsSep = TableLayout.LayoutParams(
+                TableLayout.LayoutParams.MATCH_PARENT,
+                TableLayout.LayoutParams.WRAP_CONTENT)
+            trParamsSep.setMargins(leftRowMargin, topRowMargin, rightRowMargin, bottomRowMargin)
 
-                trSep.layoutParams = trParamsSep
-                val tvSep = TextView(this)
-                val tvSepLay = TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-                    TableRow.LayoutParams.WRAP_CONTENT)
-                tvSepLay.span = 4
-                tvSep.layoutParams = tvSepLay
-                tvSep.setBackgroundColor(Color.parseColor("#000000"))
-                tvSep.height = 10
+            trSep.layoutParams = trParamsSep
+            val tvSep = TextView(this)
+            val tvSepLay = TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
+                TableRow.LayoutParams.WRAP_CONTENT, 1.0F)
+            tvSepLay.span = 1
+            tvSep.layoutParams = tvSepLay
+            tvSep.setBackgroundColor(Color.parseColor("#000000"))
+            tvSep.height = 8
 
-                trSep.addView(tvSep)
-                tebleKits.addView(trSep, trParamsSep)
-            }
+            trSep.addView(tvSep)
+            tebleKits.addView(trSep, trParamsSep)
         }
     }
 
