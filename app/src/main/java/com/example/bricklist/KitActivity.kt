@@ -7,6 +7,8 @@ import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.DisplayMetrics
+import android.view.Gravity
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
@@ -94,6 +96,11 @@ class KitActivity : AppCompatActivity() {
             imgV.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT, 1.0F)
 
+            val dm = DisplayMetrics()
+            imgV.minimumHeight = dm.heightPixels
+            imgV.minimumWidth = dm.widthPixels
+
+
             // Nazwa
             val nameTV = TextView(this)
             nameTV.setText(items.get(i).getName())
@@ -105,7 +112,7 @@ class KitActivity : AppCompatActivity() {
             val qtTV = TextView(this)
             qtTV.text = items.get(i).getQuantityInStore().toString() + "/" + items.get(i).getQuantityInSet().toString() // ile w zestawie
             qtTV.layoutParams = LinearLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-                TableRow.LayoutParams.WRAP_CONTENT, 1.0F)
+                TableRow.LayoutParams.WRAP_CONTENT, 1.5F)
             qtTV.id = View.generateViewId()
             qtTV.setPadding(20, 15, 20, 15)
 
@@ -169,13 +176,6 @@ class KitActivity : AppCompatActivity() {
             verticalLinearLayout.addView(horizontalLinearLayoutLayout)
 
             tr.addView(verticalLinearLayout)
-//            tr.addView(imgV)
-//            tr.addView(tv3)
-//
-//            tr.addView(btn1)
-//            tr.addView(btn2)
-//            tr.addView(tv2)
-
 
             tebleKits.addView(tr)
             if(inStore == inSet){
@@ -183,26 +183,24 @@ class KitActivity : AppCompatActivity() {
             }
 
             // linia separująca
-            if (i > -1) {
-                val trSep = TableRow(this)
-                val trParamsSep = TableLayout.LayoutParams(
-                    TableLayout.LayoutParams.MATCH_PARENT,
-                    TableLayout.LayoutParams.WRAP_CONTENT)
-                trParamsSep.setMargins(leftRowMargin, topRowMargin, rightRowMargin, bottomRowMargin)
+            val trSep = TableRow(this)
+            val trParamsSep = TableLayout.LayoutParams(
+                TableLayout.LayoutParams.MATCH_PARENT,
+                TableLayout.LayoutParams.WRAP_CONTENT, 1.0F)
+            trParamsSep.setMargins(leftRowMargin, topRowMargin, rightRowMargin, bottomRowMargin)
 
-                trSep.layoutParams = trParamsSep
-                val tvSep = TextView(this)
-                val tvSepLay = TableRow.LayoutParams(
-                    TableRow.LayoutParams.MATCH_PARENT,
-                    TableRow.LayoutParams.WRAP_CONTENT)
-                tvSepLay.span = 1
-                tvSep.layoutParams = tvSepLay
-                tvSep.setBackgroundColor(Color.parseColor("#000000"))
-                tvSep.height = 10
+            trSep.layoutParams = trParamsSep
+            val tvSep = TextView(this)
+            val tvSepLay = TableRow.LayoutParams(
+                TableRow.LayoutParams.MATCH_PARENT,
+                TableRow.LayoutParams.WRAP_CONTENT)
+            tvSepLay.span = 1
+            tvSep.layoutParams = tvSepLay
+            tvSep.setBackgroundColor(Color.parseColor("#000000"))
+            tvSep.height = 10
 
-                trSep.addView(tvSep)
-                tebleKits.addView(trSep, trParamsSep)
-            }
+            trSep.addView(tvSep)
+            tebleKits.addView(trSep, trParamsSep)
         }
     }
 
