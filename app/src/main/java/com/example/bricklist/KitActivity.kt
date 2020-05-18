@@ -255,7 +255,7 @@ class KitActivity : AppCompatActivity() {
         transformer.setOutputProperty(OutputKeys.INDENT, "yes")
         transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2")
 
-        val path =  this.filesDir //this.getExternalFilesDir(null)
+        val path =  this.filesDir
         val outDir = File(path, "BrickExport")
         outDir.mkdir()
 

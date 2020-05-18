@@ -242,11 +242,11 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
             // jeśli wczeniej nie było w bazie zdjęcia, to się teraz doda
             if(photo == null){
                 val cd=ImgDownloader()
-                cd.execute(codeCode.toString(),
+                val img = cd.execute(codeCode.toString(),
                     "https://www.lego.com/service/bricks/5/2/" + codeCode,
                     "http://img.bricklink.com/P/" + codeCode + "/" + partCode + ".gif",
                     "https://www.bricklink.com/PL/" + partCode + ".jpg")
-                photo = getImage(codeCode) // skoro synchronicznie jest pobrane zdjęcie, to to niekoniecznie coś przeczyta
+                photo = img.get() //getImage(codeCode) // skoro synchronicznie jest pobrane zdjęcie, to to niekoniecznie coś przeczyta
             }
 
             inventoryParts.setPhoto(photo)
@@ -405,17 +405,17 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
 
     // --------------------------------------------------------
 
-    private inner class ImgDownloader: AsyncTask<String, Int, String>() {
+    private inner class ImgDownloader: AsyncTask<String, Int, ByteArray>() {
         override fun onPreExecute() {
             super.onPreExecute()
         }
 
         @RequiresApi(Build.VERSION_CODES.O)
-        override fun onPostExecute(result: String?) {
+        override fun onPostExecute(result: ByteArray?) {
             super.onPostExecute(result)
         }
 
-        override fun doInBackground(vararg params: String?): String {
+        override fun doInBackground(vararg params: String?): ByteArray {
             try{
                 var photo: ByteArray? = null
 
@@ -448,19 +448,18 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
 
                 // zapisa do bazy
                 insertImage(params[0]!!.toInt(),photo)
-//                return photo.toString()
+               return photo;
             }
             catch (e: MalformedURLException){
-                return "Malformed URL"
+                return "Malformed URL".toByteArray()
             }
             catch (e: FileNotFoundException){
-                return "File not found"
+                return "File not found".toByteArray()
             }
             catch (e: IOException){
-                return "IO Exception"
+                return "IO Exception".toByteArray()
             }
-
-            return "success"
+//            return "success"
         }
     }
 }
