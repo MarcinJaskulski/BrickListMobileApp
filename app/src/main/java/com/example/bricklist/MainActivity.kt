@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun showData(){
-        tableCurrencies.removeAllViews()
+        tebleKits.removeAllViews()
         kitList = mutableListOf()
 
         val data = readFile()
@@ -107,7 +107,6 @@ class MainActivity : AppCompatActivity() {
         mediumTextSize = resources.getDimension(R.dimen.font_size_medium).toInt()
         val rows = kits.count()
 
-        // -1 oznacza nagłówek
         for (i in 0..rows - 1) {
             var kitName: String = kits.get(i).getName()
             var kitId = kits.get(i).getId()
@@ -117,7 +116,6 @@ class MainActivity : AppCompatActivity() {
                 TableRow.LayoutParams.WRAP_CONTENT)
             btn.gravity = Gravity.CENTER
             btn.setOnClickListener{
-//                Toast.makeText(this@MainActivity, "Click", Toast.LENGTH_SHORT).show()
                 val myDbHelper = DatabaseHelper(this@MainActivity)
                 myDbHelper.updateLastAccessed(kitId)
 
@@ -151,17 +149,30 @@ class MainActivity : AppCompatActivity() {
                     val data = readFile()
                     val dataList = data.split(";")
                     if(dataList[0].toInt() == 1)
-                        tableCurrencies.removeView(tr)
+                        tebleKits.removeView(tr)
                 }
                 else
                     myDbHelper.updateActive(kits.get(i).getId(), true)
             }
 
-
+//            // ustawieni elementów
+//            val verticalLinearLayout = LinearLayout(this)
+//            verticalLinearLayout.orientation = LinearLayout.VERTICAL
+//            verticalLinearLayout.layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
+//                TableRow.LayoutParams.WRAP_CONTENT, 1.0F)
+//
+//            val horizontalLinearLayoutLayout = LinearLayout(this)
+//            horizontalLinearLayoutLayout.orientation = LinearLayout.HORIZONTAL
+//            horizontalLinearLayoutLayout.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+//                LinearLayout.LayoutParams.WRAP_CONTENT
+//            )
+//
+//            horizontalLinearLayoutLayout.addView(imgV)
+//            horizontalLinearLayoutLayout.addView(imgV)
 
             tr.addView(btn)
             tr.addView(switch)
-            tableCurrencies.addView(tr)
+            tebleKits.addView(tr)
 
             // linia separująca
             if (i > -1) {
@@ -181,7 +192,7 @@ class MainActivity : AppCompatActivity() {
                 tvSep.height = 10
 
                 trSep.addView(tvSep)
-                tableCurrencies.addView(trSep, trParamsSep)
+                tebleKits.addView(trSep, trParamsSep)
             }
         }
     }

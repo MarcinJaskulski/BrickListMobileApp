@@ -243,9 +243,10 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
             if(photo == null){
                 val cd=ImgDownloader()
                 val img = cd.execute(codeCode.toString(),
-                    "https://www.lego.com/service/bricks/5/2/" + codeCode,
-                    "http://img.bricklink.com/P/" + codeCode + "/" + partCode + ".gif",
-                    "https://www.bricklink.com/PL/" + partCode + ".jpg")
+                    "https://www.lego.com/service/bricks/5/2/$codeCode",
+                    "http://img.bricklink.com/P/$codeCode/$partCode.gif",
+                    "https://www.bricklink.com/PL/$partCode.jpg"
+                )
                 photo = img.get() //getImage(codeCode) // skoro synchronicznie jest pobrane zdjęcie, to to niekoniecznie coś przeczyta
             }
 

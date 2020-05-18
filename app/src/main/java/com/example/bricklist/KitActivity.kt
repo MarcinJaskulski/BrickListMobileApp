@@ -4,17 +4,12 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.media.Image
-import android.net.Uri
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.TypedValue
-import android.view.Gravity
 import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
-import com.example.bricklist.Models.InventoryModel
 import com.example.bricklist.Models.InventoryPartsModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.w3c.dom.Document
@@ -58,7 +53,7 @@ class KitActivity : AppCompatActivity() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun showData(){
-        tableCurrencies.removeAllViews()
+        tebleKits.removeAllViews()
         itemList = mutableListOf()
 
         val myDbHelper = DatabaseHelper(this@KitActivity)
@@ -86,9 +81,6 @@ class KitActivity : AppCompatActivity() {
             if(items.get(i).getItemID() == 0)
                 continue
 
-            var itemId: String? = null
-            itemId = items.get(i).getItemID().toString()
-
             var inStore = items.get(i).getQuantityInStore()
             val inSet = items.get(i).getQuantityInSet()
 
@@ -99,83 +91,93 @@ class KitActivity : AppCompatActivity() {
             if(photo != null)
                 bm = BitmapFactory.decodeByteArray(photo, 0, photo!!.size)
             imgV.setImageBitmap(bm)
-
-
-            // itemId
-            val tv = TextView(this)
-            tv.layoutParams = TableRow.LayoutParams(
-                TableRow.LayoutParams.WRAP_CONTENT,
-                TableRow.LayoutParams.WRAP_CONTENT)
-            tv.gravity = Gravity.CENTER
-            tv.setPadding(20, 15, 20, 15)
-            run({
-                tv.setBackgroundColor(Color.parseColor("#32CD32"))
-                tv.setText(items.get(i).getImageCode().toString())
-//                tv.setText(itemId)
-//                tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, mediumTextSize.toFloat())
-            })
+            imgV.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT, 1.0F)
 
             // Nazwa
-            val tv2 = TextView(this)
-            tv2.setText(items.get(i).getName())
-            tv2.layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
-                TableRow.LayoutParams.WRAP_CONTENT)
-            tv2.setPadding(20, 15, 20, 15)
+            val nameTV = TextView(this)
+            nameTV.setText(items.get(i).getName())
+            nameTV.layoutParams = LinearLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
+                TableRow.LayoutParams.WRAP_CONTENT, 1.0F)
+            nameTV.setPadding(20, 15, 20, 15)
 
             // Ilość
-            val tv3 = TextView(this)
-            tv3.text = items.get(i).getQuantityInStore().toString() + "/" + items.get(i).getQuantityInSet().toString() // ile w zestawie
-            tv3.layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT,
-                TableRow.LayoutParams.WRAP_CONTENT)
-            tv3.id = View.generateViewId()
-            tv3.setPadding(20, 15, 20, 15)
+            val qtTV = TextView(this)
+            qtTV.text = items.get(i).getQuantityInStore().toString() + "/" + items.get(i).getQuantityInSet().toString() // ile w zestawie
+            qtTV.layoutParams = LinearLayout.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
+                TableRow.LayoutParams.WRAP_CONTENT, 1.0F)
+            qtTV.id = View.generateViewId()
+            qtTV.setPadding(20, 15, 20, 15)
 
 
             val tr = TableRow(this)
             tr.id = i + 1
             tr.layoutParams = TableLayout.LayoutParams(
-                TableLayout.LayoutParams.WRAP_CONTENT,
+                TableLayout.LayoutParams.MATCH_PARENT,
                 TableLayout.LayoutParams.WRAP_CONTENT)
 
-            val btn1 = ImageButton(this)
-            btn1.setOnClickListener{
+            val subIB = ImageButton(this)
+            subIB.setOnClickListener{
                 if(inStore -1 >= 0){
                     inStore--
-                    tv3.text = (inStore).toString() + "/" + inSet.toString()
+                    qtTV.text = (inStore).toString() + "/" + inSet.toString()
                     subQuantity(items.get(i).getId(), inStore)
                 }
                 if(inStore != inSet){
                     tr.setBackgroundColor(Color.parseColor("#ffffff"))
                 }
             }
-            btn1.setImageResource(R.drawable.ic_sub)
-            btn1.setBackgroundColor(255)
+            subIB.setImageResource(R.drawable.ic_sub)
+            subIB.setBackgroundColor(255)
+            subIB.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT, 1.0F)
 
-            val btn2 = ImageButton(this)
-            btn2.setOnClickListener{
+            val addIB = ImageButton(this)
+            addIB.setOnClickListener{
                 if(inStore + 1 <= inSet){
                     inStore++
-                    tv3.text = (inStore).toString() + "/" + inSet.toString()
+                    qtTV.text = (inStore).toString() + "/" + inSet.toString()
                     addQuantity(items.get(i).getId(), inStore)
                 }
                 if(inStore == inSet){
                     tr.setBackgroundColor(Color.parseColor("#32CD32"))
                 }
             }
-            btn2.setImageResource(R.drawable.ic_add)
-            btn2.setBackgroundColor(255)
+            addIB.setImageResource(R.drawable.ic_add)
+            addIB.setBackgroundColor(255)
+            addIB.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT, 1.0F)
+
+            // ustawieni elementów
+            val verticalLinearLayout = LinearLayout(this)
+            verticalLinearLayout.orientation = LinearLayout.VERTICAL
+            verticalLinearLayout.layoutParams = TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
+                TableRow.LayoutParams.WRAP_CONTENT, 1.0F)
+
+            val horizontalLinearLayoutLayout = LinearLayout(this)
+            horizontalLinearLayoutLayout.orientation = LinearLayout.HORIZONTAL
+            horizontalLinearLayoutLayout.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+
+            horizontalLinearLayoutLayout.addView(imgV)
+            horizontalLinearLayoutLayout.addView(qtTV)
+            horizontalLinearLayoutLayout.addView(subIB)
+            horizontalLinearLayoutLayout.addView(addIB)
+            horizontalLinearLayoutLayout.addView(nameTV)
+
+            verticalLinearLayout.addView(horizontalLinearLayoutLayout)
+
+            tr.addView(verticalLinearLayout)
+//            tr.addView(imgV)
+//            tr.addView(tv3)
+//
+//            tr.addView(btn1)
+//            tr.addView(btn2)
+//            tr.addView(tv2)
 
 
-            tr.addView(imgV)
-//            tr.addView(tv)
-            tr.addView(tv3)
-
-            tr.addView(btn1)
-            tr.addView(btn2)
-            tr.addView(tv2)
-
-
-            tableCurrencies.addView(tr)
+            tebleKits.addView(tr)
             if(inStore == inSet){
                 tr.setBackgroundColor(Color.parseColor("#32CD32"))
             }
@@ -193,13 +195,13 @@ class KitActivity : AppCompatActivity() {
                 val tvSepLay = TableRow.LayoutParams(
                     TableRow.LayoutParams.MATCH_PARENT,
                     TableRow.LayoutParams.WRAP_CONTENT)
-                tvSepLay.span = 5
+                tvSepLay.span = 1
                 tvSep.layoutParams = tvSepLay
                 tvSep.setBackgroundColor(Color.parseColor("#000000"))
                 tvSep.height = 10
 
                 trSep.addView(tvSep)
-                tableCurrencies.addView(trSep, trParamsSep)
+                tebleKits.addView(trSep, trParamsSep)
             }
         }
     }
