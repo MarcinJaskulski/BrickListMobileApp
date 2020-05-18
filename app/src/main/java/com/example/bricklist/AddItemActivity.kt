@@ -127,10 +127,11 @@ class AddItemActivity : AppCompatActivity() {
                         }
                     }
                 }
+                Toast.makeText(applicationContext, "Dodano zestaw",Toast.LENGTH_SHORT).show()
+                val i = Intent(this, MainActivity::class.java)
+                startActivityForResult(i,REQUEST_CODE)
             }
-            Toast.makeText(applicationContext, "Dodano zestaw",Toast.LENGTH_SHORT).show()
-            val i = Intent(this, MainActivity::class.java)
-            startActivityForResult(i,REQUEST_CODE)
+            Toast.makeText(applicationContext, "Nie znaleziono zestawu",Toast.LENGTH_SHORT).show()
         }
         else
             Toast.makeText(applicationContext, "Zły URL",Toast.LENGTH_SHORT).show()

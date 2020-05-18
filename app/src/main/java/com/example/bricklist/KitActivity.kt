@@ -88,23 +88,23 @@ class KitActivity : AppCompatActivity() {
 
             // image
             val imgV = ImageView(this)
-            val dm = DisplayMetrics()
-            imgV.minimumHeight = dm.heightPixels
-            imgV.minimumWidth = dm.widthPixels
-
             val photo = items.get(i).getPhoto()
             var bm: Bitmap? = null
             if(photo != null)
                 bm = BitmapFactory.decodeByteArray(photo, 0, photo!!.size)
+
+            val dm = DisplayMetrics()
+            imgV.minimumHeight = dm.heightPixels
+            imgV.minimumWidth = dm.widthPixels
+
             imgV.setImageBitmap(bm)
+
             imgV.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT, 1.0F)
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 imgV.foregroundGravity = Gravity.CENTER
             }
-
-
 
             // Nazwa
             val nameTV = TextView(this)
@@ -122,7 +122,6 @@ class KitActivity : AppCompatActivity() {
             qtTV.id = View.generateViewId()
             qtTV.setPadding(20, 15, 20, 15)
             qtTV.gravity = Gravity.CENTER
-
 
             val tr = TableRow(this)
             tr.id = i + 1
