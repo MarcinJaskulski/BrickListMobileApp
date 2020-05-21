@@ -236,7 +236,7 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
 
             inventoryParts.setColorName(colorName);
 
-            // dwie wartości potrzebne do pobrania obrazka
+            // wartości potrzebne do pobrania obrazka
             val partCode = getPartCodeById(itemID)
             val codeCode = getCodeCodeByItemIdColorId(itemID, colorID)
             val colorCode = getColorCodeById(colorID)
@@ -250,7 +250,7 @@ class DatabaseHelper(private val myContext: Context) : SQLiteOpenHelper(myContex
                     "http://img.bricklink.com/P/$colorCode/$partCode.gif",
                     "https://www.bricklink.com/PL/$partCode.jpg"
                 )
-                photo = img.get() //getImage(codeCode) // skoro synchronicznie jest pobrane zdjęcie, to to niekoniecznie coś przeczyta
+                photo = img.get()
             }
 
             inventoryParts.setPhoto(photo)
